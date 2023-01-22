@@ -2625,7 +2625,7 @@ void setPinMapping(byte boardID)
 
       case 61:
     #ifndef SMALL_FLASH_MODE //No support for bluepill here anyway
-      //Pin mappings for RM-Racing board
+      //Pin mappings for RM-Racing MadCod board
       pinInjector1 = 8; //Output pin injector 1 is on
       pinInjector2 = 7; //Output pin injector 2 is on
       pinInjector3 = 6; //Output pin injector 3 is on
