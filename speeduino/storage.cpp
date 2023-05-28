@@ -160,7 +160,8 @@ void writeConfig(uint8_t pageNum)
 #elif defined(CORE_STM32) || defined(CORE_TEENSY)
   uint8_t EEPROM_MAX_WRITE_BLOCK = 64;
 #else
-  uint8_t EEPROM_MAX_WRITE_BLOCK = 20;
+  uint8_t EEPROM_MAX_WRITE_BLOCK = 18;
+  if(BIT_CHECK(currentStatus.status4, BIT_STATUS4_COMMS_COMPAT)) { EEPROM_MAX_WRITE_BLOCK = 8; } //If comms compatibility mode is on, slow the burn rate down even further
 
   #ifdef CORE_AVR
     //In order to prevent missed pulses during EEPROM writes on AVR, scale the
@@ -171,7 +172,7 @@ void writeConfig(uint8_t pageNum)
     { 
       EEPROM_MAX_WRITE_BLOCK = (uint8_t)(15000U / currentStatus.RPM);
       EEPROM_MAX_WRITE_BLOCK = max(EEPROM_MAX_WRITE_BLOCK, 1);
-      EEPROM_MAX_WRITE_BLOCK = min(EEPROM_MAX_WRITE_BLOCK, 20); //Any higher than this will cause comms timeouts on AVR
+      EEPROM_MAX_WRITE_BLOCK = min(EEPROM_MAX_WRITE_BLOCK, 15); //Any higher than this will cause comms timeouts on AVR
     }
   #endif
 

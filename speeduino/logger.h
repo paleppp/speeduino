@@ -10,6 +10,7 @@
 #define LOGGER_H
 
 #include <assert.h>
+#include "globals.h" // Needed for FPU_MAX_SIZE
 
 #ifndef UNIT_TEST // Scope guard for unit testing
   #define LOG_ENTRY_SIZE      125 /**< The size of the live data packet. This MUST match ochBlockSize setting in the ini file */
@@ -27,6 +28,18 @@ int16_t getReadableLogEntry(uint16_t logIndex);
   float getReadableFloatLogEntry(uint16_t logIndex);
 #endif
 bool is2ByteEntry(uint8_t key);
+
+void startToothLogger(void);
+void stopToothLogger(void);
+
+void startCompositeLogger(void);
+void stopCompositeLogger(void);
+
+void startCompositeLoggerTertiary(void);
+void stopCompositeLoggerTertiary(void);
+
+void startCompositeLoggerCams(void);
+void stopCompositeLoggerCams(void);
 
 // This array indicates which index values from the log are 2 byte values
 // This array MUST remain in ascending order
