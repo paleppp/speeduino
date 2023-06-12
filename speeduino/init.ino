@@ -2691,7 +2691,7 @@ void setPinMapping(byte boardID)
       pinSpareLOut4 = 22; //low current output spare4
       pinFan = 27; //Pin for the fan output
       pinResetControl = 46; //Reset control output PLACEHOLDER value for now
-      pinVSS = 21;
+      pinVSS = 20;
       #endif
       break;
   }
